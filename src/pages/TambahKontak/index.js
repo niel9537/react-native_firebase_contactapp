@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import  InputData   from '../../components';
+import { InputData }   from '../../components';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-class TambahKontak extends React.Component {
+class TambahKontak extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -39,7 +39,8 @@ class TambahKontak extends React.Component {
 	}
 }
 
-export default TambahKontak
+export default TambahKontak;
+
 const styles = StyleSheet.create({
     tombol : {
         backgroundColor: 'black',

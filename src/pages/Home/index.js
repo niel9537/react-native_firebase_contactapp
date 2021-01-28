@@ -3,9 +3,8 @@ import { Text, StyleSheet, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import TambahKontak from '../TambahKontak';
 
-export default class Home extends React.Component {
+export default class Home extends Component {
 	render() {
 		return (
 			<View style={styles.page}>
@@ -13,7 +12,7 @@ export default class Home extends React.Component {
 				<View style={styles.wrapperButton}>
 					<TouchableOpacity
 						style={styles.btnTambah}
-						onPress={() => this.props.navigation.navigate(TambahKontak)}
+						onPress={() => this.props.navigation.navigate('TambahKontak')}
 					>
 						<FontAwesomeIcon color="white" icon={faPlus} size={20} />
 					</TouchableOpacity>

@@ -1,4 +1,4 @@
-import Home from '../pages/Home'
-import TambahKontak from '../pages/TambahKontak'
+import Home from './Home'
+import TambahKontak from './TambahKontak'
 
 export { Home, TambahKontak }
