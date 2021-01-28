@@ -20,16 +20,22 @@ class TambahKontak extends Component {
     }
 
     onSubmit = () =>{
-        console.log("masuk submit");
-        console.log(this.state);
-    }
+        if(this.state.nama && this.state.nomorHP && this.state.alamat){
+            console.log("masuk submit");
+            console.log(this.state);
+        }
+        else{
+            Alert.alert('Error', 'Nama, NomorHP, dan Alamat wajib diisi');
+        }
+       
+    };
     render() {
 		return (  
 			<View>
 				<InputData label="Nama" placeholder="Masukan Nama" onChangeText={this.onChangeText} value={this.state.nama} namaState="nama"/>
 				<InputData label="No. HP" placeholder="Masukan No. HP" keyboardType="number-pad" onChangeText={this.onChangeText} value={this.state.nomorHP} namaState="nomorHP" />
 				<InputData label="Alamat" placeholder="Masukan Alamat" isTextArea={true} onChangeText={this.onChangeText} value={this.state.alamat} namaState="alamat" />
-                <TouchableOpacity style={styles.tombol} onPress={()=> this.onSubmit}>
+                <TouchableOpacity style={styles.tombol} onPress={()=> this.onSubmit()}>
                     <Text style={styles.textTombol}>
                         SUBMIT
                     </Text>
