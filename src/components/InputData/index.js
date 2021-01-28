@@ -1,32 +1,23 @@
 import React from 'react'
 import { StyleSheet, Text, View, TextInput } from 'react-native'
-import { Value } from 'react-native-reanimated'
 
 const InputData = ({label, placeholder, keyboardType, isTextArea, onChangeText, namaState, value}) => {
-    if(isTextArea){
-        return (
-            <>
-                <Text style={styles.label}> {label} : </Text>
-                <TextInput 
-                multiline={true}
-                numberOfLines={4}
-                placeholder={placeholder} 
-                style={styles.textInputArea}
-                keyboardType={keyboardType}
-                value={value}
-                onChangeText={(text) => onChangeText(namaState, text)}/>
-            </>
-        )
-    }
 
     return (
-        <>
+        <View>
             <Text style={styles.label}> {label} : </Text>
-            <TextInput placeholder={placeholder} style={styles.textInput}
-            keyboardType={keyboardType} value={Value}
+            <TextInput 
+            multiline={isTextArea}
+            numberOfLines={isTextArea ? 4 : 1}
+            placeholder={placeholder} 
+            style={isTextArea ? styles.textInputArea : styles.textInput}
+            keyboardType={keyboardType}
+            value={value}
             onChangeText={(text) => onChangeText(namaState, text)}/>
-        </>
+        </View>
     )
+    
+    
 }
 
 export default InputData;
