@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, Alert  } from 'react-native';
 import { InputData }   from '../../components';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-//import FIREBASE from '../../config/Firebase'
 import database from '@react-native-firebase/database'
+import firebase from '../../config/Firebase'
 
 class TambahKontak extends Component {
     constructor(props) {
@@ -20,10 +20,11 @@ class TambahKontak extends Component {
             [namaState] : value
         })
     }
-
+    
+    
     onSubmit = () =>{
         if(this.state.nama && this.state.nomorHP && this.state.alamat){
-            const kontakReferensi = database().ref('Kontak');
+            const kontakReferensi = firebase.database().ref('Kontak');
             const kontak = {
                 nama : this.state.nama,
                 nomorHP : this.state.nomorHP,

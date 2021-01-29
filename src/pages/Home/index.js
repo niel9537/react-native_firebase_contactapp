@@ -3,9 +3,32 @@ import { Text, StyleSheet, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-
+import database from '@react-native-firebase/database'
+import firebase from '../../config/Firebase'
 export default class Home extends Component {
+	constructor(props) {
+		super(props)
+	
+		this.state = {
+			 kontaks: {},
+			 kontaksKey: []
+		}
+	}
+
+	componentDidMount(){
+		firebase.database().ref("Kontak").once('value', (querySnapShot) => {
+			let data = querySnapShot.val() ? querySnapShot.val() : {};
+			let kontakItem = {...data};
+			this.setState({
+				kontaks : kontakItem,
+				kontaksKey : Object.keys(kontakItem)
+			})
+		})
+	}
+	
 	render() {
+		console.log("Kontaks : ", this.state.kontaks);
+		console.log("Kontaks Key : ", this.state.kontaksKey);
 		return (
 			<View style={styles.page}>
 				<Text> Home </Text>
