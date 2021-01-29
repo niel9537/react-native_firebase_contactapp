@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import database from '@react-native-firebase/database'
 import firebase from '../../config/Firebase'
+import { CardKontak } from '../../components';
 export default class Home extends Component {
 	constructor(props) {
 		super(props)
@@ -27,11 +28,26 @@ export default class Home extends Component {
 	}
 	
 	render() {
-		console.log("Kontaks : ", this.state.kontaks);
-		console.log("Kontaks Key : ", this.state.kontaksKey);
+		const { kontaks, kontaksKey} = this.state
+		
 		return (
 			<View style={styles.page}>
-				<Text> Home </Text>
+				<View style={styles.header}>
+					<Text style={styles.title}>Daftar Kontak</Text>
+					<View style={styles.garis}></View>
+				</View>
+				<View style={styles.listKontak}>
+					{kontaksKey.length > 0 ? (
+						kontaksKey.map((key) => (
+						<CardKontak key={key} kontakItem={kontaks[key]} id={key}/>
+						))
+					) : (
+						<Text>Daftar Kosong</Text>
+					)}
+				</View>
+				
+				
+				
 				<View style={styles.wrapperButton}>
 					<TouchableOpacity
 						style={styles.btnTambah}
@@ -49,12 +65,28 @@ const styles = StyleSheet.create({
 	page: {
 		flex: 1
 	},
+	header : {
+		paddingHorizontal : 30,
+		paddingTop : 30
+	},
+	title : {
+		fontSize : 20,
+		fontWeight : 'bold',
+	},
+	garis : {
+		borderWidth : 1,
+		marginTop : 10,
+	},
 	wrapperButton: {
 		flex: 1,
 		position: 'absolute',
 		bottom: 0,
 		right: 0,
 		margin: 30
+	},
+	listKontak : {
+		paddingHorizontal : 30,
+		marginTop : 20,
 	},
 	btnTambah: {
 		padding: 20,

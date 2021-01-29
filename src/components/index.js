@@ -1,3 +1,3 @@
 import InputData from './InputData' ;
-
-export { InputData }
+import CardKontak from './CardKontak';
+export { InputData, CardKontak }
