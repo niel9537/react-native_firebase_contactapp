@@ -2,7 +2,6 @@ import React from 'react'
 import { StyleSheet, Text, View, TextInput } from 'react-native'
 
 const InputData = ({label, placeholder, keyboardType, isTextArea, onChangeText, namaState, value}) => {
-
     return (
         <View>
             <Text style={styles.label}> {label} : </Text>
@@ -15,9 +14,7 @@ const InputData = ({label, placeholder, keyboardType, isTextArea, onChangeText, 
             value={value}
             onChangeText={(text) => onChangeText(namaState, text)}/>
         </View>
-    )
-    
-    
+    )  
 }
 
 export default InputData;

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, Alert  } from 'react-native';
 import { InputData }   from '../../components';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+//import FIREBASE from '../../config/Firebase'
+import database from '@react-native-firebase/database'
 
 class TambahKontak extends Component {
     constructor(props) {
@@ -21,10 +23,22 @@ class TambahKontak extends Component {
 
     onSubmit = () =>{
         if(this.state.nama && this.state.nomorHP && this.state.alamat){
-            console.log("masuk submit");
-            console.log(this.state);
-        }
-        else{
+            const kontakReferensi = database().ref('Kontak');
+            const kontak = {
+                nama : this.state.nama,
+                nomorHP : this.state.nomorHP,
+                alamat : this.state.alamat,
+            }
+            kontakReferensi
+                .push(kontak)
+                .then((data) => {
+                    Alert.alert('Sukses', 'Kontak Tersimpan');
+                    this.props.navigation.replace('Home');
+                }) 
+                .catch((error) => {
+                    console.log("error : ", error);
+                })
+        }else{
             Alert.alert('Error', 'Nama, NomorHP, dan Alamat wajib diisi');
         }
        
