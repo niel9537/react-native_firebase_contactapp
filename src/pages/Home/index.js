@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View } from 'react-native';
+import { Text, StyleSheet, View, Alert } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -18,6 +18,9 @@ export default class Home extends Component {
 	}
 
 	componentDidMount(){
+		this.ambilData();
+	}
+	ambilData = () => {
 		firebase.database().ref("Kontak").once('value', (querySnapShot) => {
 			let data = querySnapShot.val() ? querySnapShot.val() : {};
 			let kontakItem = {...data};
@@ -27,7 +30,26 @@ export default class Home extends Component {
 			})
 		})
 	}
-	
+	removeData = (id) => {
+		Alert.alert(
+			"INFO",
+			"Anda yakin ingin menghapus data kontak?",
+			[
+			  {
+				text: "Cancel",
+				onPress: () => console.log("Cancel Pressed"),
+				style: "cancel"
+			  },
+			  { text: "OK", onPress: () => {
+				firebase.database()
+				.ref('Kontak/'+ id)
+				.remove(); 
+			  this.ambilData(); 
+			  Alert.alert('Terhapus', 'Data telah terhapus')} }
+			],
+			{ cancelable: false }
+		  );
+	}
 	render() {
 		const { kontaks, kontaksKey} = this.state
 		
@@ -41,7 +63,7 @@ export default class Home extends Component {
 					{kontaksKey.length > 0 ? (
 						kontaksKey.map((key) => (
 						<CardKontak key={key} kontakItem={kontaks[key]} id={key}
-						{...this.props}/>
+						{...this.props} removeData={this.removeData}/>
 						))
 					) : (
 						<Text>Daftar Kosong</Text>
