@@ -40,7 +40,8 @@ export default class Home extends Component {
 				<View style={styles.listKontak}>
 					{kontaksKey.length > 0 ? (
 						kontaksKey.map((key) => (
-						<CardKontak key={key} kontakItem={kontaks[key]} id={key}/>
+						<CardKontak key={key} kontakItem={kontaks[key]} id={key}
+						{...this.props}/>
 						))
 					) : (
 						<Text>Daftar Kosong</Text>

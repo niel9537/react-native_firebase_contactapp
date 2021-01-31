@@ -4,9 +4,9 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faEdit, faTimes } from '@fortawesome/free-solid-svg-icons'
 
-const CardKontak = ({id, kontakItem}) => {
+const CardKontak = ({id, kontakItem, navigation}) => {
     return (
-        <TouchableOpacity  style={styles.container}>
+        <TouchableOpacity  style={styles.container} onPress={() => navigation.navigate('DetailKontak', {id :id})}>
            <View>
                <Text style={styles.nama}>
                    {kontakItem.nama}

@@ -1,4 +1,4 @@
 import Home from './Home'
 import TambahKontak from './TambahKontak'
-
-export { Home, TambahKontak }
+import DetailKontak from './DetailKontak'
+export { Home, TambahKontak, DetailKontak }

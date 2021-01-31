@@ -1,13 +1,14 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
-import { Home, TambahKontak } from '../pages'
+import { Home, TambahKontak, DetailKontak } from '../pages'
 
 const Stack = new createStackNavigator();
 const Router = () => {
     return (
         <Stack.Navigator>
         <Stack.Screen name="Home" component={Home}/>
-        <Stack.Screen name="TambahKontak" component={TambahKontak}/>   
+        <Stack.Screen name="TambahKontak" component={TambahKontak}/> 
+        <Stack.Screen name="DetailKontak" component={DetailKontak}/>   
         </Stack.Navigator>
     )
 }
