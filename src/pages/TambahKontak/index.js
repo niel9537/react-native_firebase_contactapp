@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, Alert  } from 'react-native';
 import { InputData }   from '../../components';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import database from '@react-native-firebase/database'
+
 import firebase from '../../config/Firebase'
 
 class TambahKontak extends Component {

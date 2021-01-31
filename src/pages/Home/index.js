@@ -4,6 +4,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import database from '@react-native-firebase/database'
+//import firebase from '@react-native-firebase/app'
 import firebase from '../../config/Firebase'
 import { CardKontak } from '../../components';
 export default class Home extends Component {
