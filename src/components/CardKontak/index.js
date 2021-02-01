@@ -17,7 +17,7 @@ const CardKontak = ({id, kontakItem, navigation, removeData}) => {
                
            </View>
            <View style={styles.icon}>
-            <FontAwesomeIcon icon={faEdit} color={'skyblue'} size={25}/>
+            <FontAwesomeIcon icon={faEdit} color={'skyblue'} size={25} onPress={() => navigation.navigate('EditKontak', {id :id})}/>
             <FontAwesomeIcon icon={faTimes} color={'skyblue'} size={25} onPress={() => removeData(id)}/>
            </View>
         </TouchableOpacity>
